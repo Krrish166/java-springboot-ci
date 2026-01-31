@@ -83,10 +83,11 @@ jobs:
               MYSQL_PASSWORD=bijaya123 \
               LOG_FILE_PATH=/var/log/app/datastore.log \
               java -jar datastore-0.0.7.jar \
-            --server.port=8084 \
-            > /var/log/app/nohup.out 2>&1 &
+              --server.port=8084 \
+              --server.address=0.0.0.0 \
+              > /var/log/app/nohup.out 2>&1 &
 
-            sleep 10
-            pgrep -fl datastore-0.0.7.jar || (echo "❌ App failed to start" && exit 1)
+              sleep 10
+              pgrep -fl datastore-0.0.7.jar || (echo "❌ App failed to start" && exit 1)
 
-            echo "✅ Application started successfully"
+              echo "✅ Application started successfully"
