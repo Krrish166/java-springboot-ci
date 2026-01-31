@@ -22,5 +22,5 @@ jobs:
 
     - name: Build with Maven
       run: |
-        cd backend
+        cd Java-springboot-project/backend
         mvn clean install
