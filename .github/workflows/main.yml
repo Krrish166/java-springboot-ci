@@ -23,5 +23,5 @@ jobs:
 
     - name: Build Spring Boot app
       run: |
-        cd java-springboot-project/backend
+        cd Java-springboot-project/backend
         mvn clean test package
