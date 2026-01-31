@@ -74,7 +74,7 @@ jobs:
             sudo mkdir -p /var/log/app
             sudo chown ec2-user:ec2-user /var/log/app
 
-            cd /home/ec2-user/app/target
+            cd /home/ec2-user/app/target/Java-springboot-project/backend/target
 
             nohup env \
               MYSQL_HOST=database-1.cxkq8gcu2wq9.ap-south-1.rds.amazonaws.com \
@@ -83,11 +83,10 @@ jobs:
               MYSQL_PASSWORD=bijaya123 \
               LOG_FILE_PATH=/var/log/app/datastore.log \
               java -jar datastore-0.0.7.jar \
-              --server.port=8084 \
-              > /var/log/app/nohup.out 2>&1 &
+            --server.port=8084 \
+            > /var/log/app/nohup.out 2>&1 &
 
             sleep 10
+            pgrep -fl datastore-0.0.7.jar || (echo "❌ App failed to start" && exit 1)
 
-            pgrep -fl datastore-0.0.7.jar || (echo "❌ Application failed to start" && exit 1)
-
-            echo "✅ New Application Started Successfully on port 8084"
+            echo "✅ Application started successfully"
