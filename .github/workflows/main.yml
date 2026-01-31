@@ -15,6 +15,12 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
 
+    - name: Debug repo structure
+      run: |
+        pwd
+        ls -la
+        ls -la *
+
     - name: Set up Java 17
       uses: actions/setup-java@v4
       with:
@@ -23,5 +29,5 @@ jobs:
 
     - name: Build Spring Boot app
       run: |
-        cd java-springboot-ci/Java-springboot-project/backend
+        cd Java-springboot-project/backend
         mvn clean test package
